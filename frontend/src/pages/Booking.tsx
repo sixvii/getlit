@@ -16,6 +16,8 @@ const BookingPage = () => {
     notes: '',
     agreed: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const timeSlots = [
     '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
@@ -82,21 +84,28 @@ const BookingPage = () => {
   };
 
   const handleSchedule = async () => {
-    if (formData.name && formData.email && formData.agreed && selectedDate && selectedTime) {
-      const dateStr = selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-      try {
-        await sendBookingEmail({
-          name: formData.name,
-          email: formData.email,
-          notes: formData.notes,
-          date: dateStr,
-          time: String(selectedTime),
-        });
-      } catch (err) {
-        // If email sending fails, we still move to confirmed
-        console.error('Failed to send booking email', err);
-      }
+    if (!formData.name || !formData.email || !formData.agreed || !selectedDate || !selectedTime) {
+      return;
+    }
+
+    const dateStr = selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      await sendBookingEmail({
+        name: formData.name,
+        email: formData.email,
+        notes: formData.notes,
+        date: dateStr,
+        time: String(selectedTime),
+      });
       setStep('confirmed');
+    } catch (err) {
+      console.error('Failed to send booking email', err);
+      setSubmitError('Failed to send booking email. Please try again in a moment.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -229,11 +238,14 @@ const BookingPage = () => {
                   
                   <button
                     onClick={handleSchedule}
-                    disabled={!formData.name || !formData.email || !formData.agreed}
+                    disabled={!formData.name || !formData.email || !formData.agreed || isSubmitting}
                     className="w-full bg-[#004EBB] text-white py-3 md:py-3 rounded-full text-sm md:text-base font-medium hover:bg-[#004EBB]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Schedule Event
+                    {isSubmitting ? 'Scheduling...' : 'Schedule Event'}
                   </button>
+                  {submitError && (
+                    <p className="text-sm text-red-600">{submitError}</p>
+                  )}
                 </div>
               </div>
             ) : (
