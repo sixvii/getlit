@@ -8,15 +8,24 @@ dotenv.config();
 const app = express();
 const port = Number(process.env.PORT) || 4000;
 
-const defaultOrigins = ['http://localhost:5173', 'http://localhost:8081'];
+const defaultOrigins = [
+  'http://localhost:5173',
+  'http://localhost:8081',
+  'https://g3t-lit.web.app',
+  'https://g3t-lit.firebaseapp.com',
+];
 const corsOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
   : defaultOrigins;
 
+const normalizeOrigin = (origin) => (origin ? origin.replace(/\/+$/, '') : origin);
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || corsOrigins.includes(origin) || corsOrigins.includes('*')) {
+      const normalizedOrigin = normalizeOrigin(origin);
+      const normalizedAllowList = corsOrigins.map(normalizeOrigin);
+      if (!normalizedOrigin || normalizedAllowList.includes(normalizedOrigin) || normalizedAllowList.includes('*')) {
         callback(null, true);
         return;
       }
