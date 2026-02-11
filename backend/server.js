@@ -14,12 +14,24 @@ app.use(
 );
 app.use(express.json());
 
+const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+const smtpPort = Number(process.env.SMTP_PORT || 587);
+const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+const smtpConnectionTimeout = Number(process.env.SMTP_CONNECTION_TIMEOUT || 10000);
+const smtpGreetingTimeout = Number(process.env.SMTP_GREETING_TIMEOUT || 10000);
+const smtpSocketTimeout = Number(process.env.SMTP_SOCKET_TIMEOUT || 20000);
+
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: smtpHost,
+  port: smtpPort,
+  secure: smtpSecure,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  connectionTimeout: smtpConnectionTimeout,
+  greetingTimeout: smtpGreetingTimeout,
+  socketTimeout: smtpSocketTimeout,
 });
 
 app.get('/api/health', (req, res) => {
