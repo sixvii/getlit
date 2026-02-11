@@ -71,3 +71,13 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+
+
+
+
+PORT=4001
+CORS_ORIGIN=https://g3t-lit.web.app,https://g3t-lit.firebaseapp.com,https://portfolio-4esc.onrender.com
+GMAIL_USER=getlitgotlit@gmail.com
+GMAIL_APP_PASSWORD=qvumoxioaxofaasr
+TO_EMAIL=getlitgotlit@gmail.com

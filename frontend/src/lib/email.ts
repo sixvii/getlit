@@ -4,6 +4,7 @@ export type BookingEmailPayload = {
   notes: string;
   date: string;
   time: string;
+  timeZone: string;
 };
 
 export async function sendBookingEmail(payload: BookingEmailPayload) {

@@ -10,6 +10,7 @@ const BookingPage = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedTimeZone, setSelectedTimeZone] = useState('America/Los_Angeles');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +23,23 @@ const BookingPage = () => {
   const timeSlots = [
     '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
     '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM'
+  ];
+
+  const timeZones = [
+    { value: 'America/Los_Angeles', label: 'Pacific Time (US & Canada)' },
+    { value: 'America/Denver', label: 'Mountain Time (US & Canada)' },
+    { value: 'America/Chicago', label: 'Central Time (US & Canada)' },
+    { value: 'America/New_York', label: 'Eastern Time (US & Canada)' },
+    { value: 'America/Sao_Paulo', label: 'Brasilia Time (South America)' },
+    { value: 'Europe/London', label: 'Greenwich Mean Time (UK)' },
+    { value: 'Europe/Paris', label: 'Central European Time (Paris)' },
+    { value: 'Africa/Johannesburg', label: 'South Africa Standard Time' },
+    { value: 'Asia/Dubai', label: 'Gulf Standard Time (Dubai)' },
+    { value: 'Asia/Kolkata', label: 'India Standard Time' },
+    { value: 'Asia/Bangkok', label: 'Indochina Time (Bangkok)' },
+    { value: 'Asia/Shanghai', label: 'China Standard Time' },
+    { value: 'Asia/Tokyo', label: 'Japan Standard Time' },
+    { value: 'Australia/Sydney', label: 'Australian Eastern Time (Sydney)' },
   ];
 
   const getDaysInMonth = (date: Date) => {
@@ -99,6 +117,7 @@ const BookingPage = () => {
         notes: formData.notes,
         date: dateStr,
         time: String(selectedTime),
+        timeZone: selectedTimeZone,
       });
       setStep('confirmed');
     } catch (err) {
@@ -168,6 +187,9 @@ const BookingPage = () => {
                 {selectedTime && (
                   <p className="text-[#1c1c1c]/70">{selectedTime}</p>
                 )}
+                <p className="text-[#1c1c1c]/70 text-sm mt-1">
+                  {timeZones.find((tz) => tz.value === selectedTimeZone)?.label}
+                </p>
               </div>
             )}
           </div>
@@ -302,7 +324,21 @@ const BookingPage = () => {
                   
                   {/* Timezone */}
                   <div className="text-[#1c1c1c]/70 text-xs md:text-sm">
-                    Time zone: Pacific Time (US & Canada)
+                    <label className="block text-[#1c1c1c] text-xs md:text-sm font-medium mb-2" htmlFor="timeZone">
+                      Time zone
+                    </label>
+                    <select
+                      id="timeZone"
+                      value={selectedTimeZone}
+                      onChange={(e) => setSelectedTimeZone(e.target.value)}
+                      className="w-full md:w-72 px-3 py-2 rounded-lg text-[#1c1c1c] text-xs md:text-sm focus:outline-none"
+                    >
+                      {timeZones.map((tz) => (
+                        <option key={tz.value} value={tz.value}>
+                          {tz.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
