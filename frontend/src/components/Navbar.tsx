@@ -53,7 +53,7 @@ const Navbar = () => {
                 Testimonials
               </button>
               <a
-                href="https://docs.google.com/document/d/1VtNEeJAaV2_kBpA-tTQ5ebVMozxgQOQ4CSCatlBaDnw/edit?usp=sharing"
+                href="https://docs.google.com/document/d/1Zb2J5I0qE_QqD0oDyKzrxQxCVofDt8cG2ChAaAXa0Xw?tab=t.0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 border border-white rounded-full text-white hover:bg-white/10 transition-all duration-300"
@@ -103,7 +103,7 @@ const Navbar = () => {
 
             {/* Right - Download CV */}
             <a
-              href="https://docs.google.com/document/d/1VtNEeJAaV2_kBpA-tTQ5ebVMozxgQOQ4CSCatlBaDnw/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1Zb2J5I0qE_QqD0oDyKzrxQxCVofDt8cG2ChAaAXa0Xw?tab=t.0"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-white rounded-full text-white text-sm hover:bg-white/10 transition-all duration-300"

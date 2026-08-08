@@ -174,7 +174,7 @@ const BookingPage = () => {
             </div>
             
             <div className="flex items-start gap-3 text-[#1c1c1c]">
-              <Video size={18} className="mt-1" />
+              <Video size={25} className="mt-1" />
               <span className="text-sm">Web conferencing details provided upon confirmation.</span>
             </div>
 

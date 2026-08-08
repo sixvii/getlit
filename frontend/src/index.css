@@ -124,6 +124,15 @@
   .pause-on-hover:hover .marquee-vertical {
     animation-play-state: paused;
   }
+
+  .spin-slow {
+    animation: spin-slow 34s linear infinite;
+    transform-origin: center;
+  }
+
+  .pause-on-hover:hover .spin-slow {
+    animation-play-state: paused;
+  }
 }
 
 @layer utilities {
@@ -161,5 +170,14 @@
   }
   100% {
     transform: translateY(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

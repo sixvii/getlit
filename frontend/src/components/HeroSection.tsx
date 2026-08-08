@@ -1,6 +1,50 @@
 import { motion } from 'framer-motion';
 import { Mail, MessageCircle } from 'lucide-react';
-import emojiImage from '../assets/bitmot.png';
+
+const homeIconModules = import.meta.glob('../assets/homeicons/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const homeIcons = Object.entries(homeIconModules)
+  .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
+  .map(([path, src]) => ({
+    src,
+    alt: path.split('/').pop()?.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ') ?? 'home icon',
+  }));
+
+const orbitRadius = 112;
+
+const HomeIconOrbit = () => {
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[360px] pause-on-hover">
+      <div className="absolute inset-6 rounded-full border border-white/10 bg-white/5 shadow-[0_0_80px_rgba(255,255,255,0.08)]" />
+      <div className="absolute inset-[20%] rounded-full bg-gradient-to-br from-white/10 to-transparent blur-2xl" />
+
+      <div className="relative h-full w-full spin-slow">
+        {homeIcons.map((icon, index) => {
+          const angle = (360 / homeIcons.length) * index - 90;
+
+          return (
+            <div
+              key={icon.src}
+              className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/15 bg-white/10 p-2 shadow-lg shadow-black/20 backdrop-blur-sm sm:h-28 sm:w-28"
+              style={{
+                transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${orbitRadius}px) rotate(${-angle}deg)`,
+              }}
+            >
+              <img
+                src={icon.src}
+                alt={icon.alt}
+                className="h-full w-full rounded-full object-cover"
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -14,14 +58,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="order-2 lg:order-1"
           >
-            <div className="relative">
-              <div className="absolute  rounded-3xl blur-3xl" />
-              <img
-                src={emojiImage}
-                alt="Emoji Hero"
-                className="relative rounded-3xl w-full max-w-xs mx-auto lg:max-w-[250px] object-cover"
-              />
-            </div>
+            <HomeIconOrbit />
           </motion.div>
 
           {/* Right - Text & Buttons */}
