@@ -54,6 +54,35 @@
     --sidebar-border: 0 0% 30%;
     --sidebar-ring: 270 100% 64%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 11%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 35%;
+
+    --accent: 270 100% 64%;
+    --accent-foreground: 0 0% 11%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 11%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 11%;
+    --sidebar-border: 0 0% 88%;
+  }
 }
 
 @layer base {
@@ -66,7 +95,7 @@
   }
 
   body {
-    background-color: #111111;
+    background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -76,15 +105,23 @@
 
 @layer components {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply backdrop-blur-xl border;
+    background-color: hsl(var(--card) / 0.75);
+    border-color: hsl(var(--border) / 0.7);
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-gray-300/20 rounded-2xl;
+    @apply backdrop-blur-xl border rounded-2xl;
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    color: hsl(var(--card-foreground));
   }
 
   .glass-card-3xl {
-    @apply bg-white/5 backdrop-blur-xl border border-gray-300/20 rounded-3xl;
+    @apply backdrop-blur-xl border rounded-3xl;
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    color: hsl(var(--card-foreground));
   }
 
   .fade-edges {
@@ -101,11 +138,20 @@
   }
 
   .btn-white {
-    @apply bg-white text-background rounded-full px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply rounded-full px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
   }
 
   .btn-outline {
-    @apply bg-transparent border border-white text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:bg-white/10;
+    @apply bg-transparent rounded-full px-6 py-3 font-medium transition-all duration-300;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  .btn-outline:hover {
+    background-color: hsl(var(--muted));
   }
 
   .marquee {

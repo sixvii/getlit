@@ -11,7 +11,7 @@ const StatsMarquee = () => {
   const doubledStats = [...stats, ...stats, ...stats, ...stats];
 
   return (
-    <section className="w-full bg-card py-8 overflow-hidden bg-[#1C1C1C]">
+    <section className="w-full bg-background py-8 overflow-hidden">
       <div className="relative">
         <div className="flex marquee">
           {doubledStats.map((stat, index) => (
@@ -19,7 +19,7 @@ const StatsMarquee = () => {
               <Star className="text-primary fill-primary" size={30} />
               <span className="text-xl md:text-[30px] font-semibold">
                 <span className="text-primary">{stat.highlight}</span>
-                <span className="text-white">{stat.text}</span>
+                <span className="text-foreground">{stat.text}</span>
               </span>
             </div>
           ))}

@@ -7,6 +7,7 @@ import RandomsReel from '@/components/RandomsReel';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <TestimonialsSection />
       <CTASection />
       <Footer />
+      <ThemeToggle />
     </div>
   );
 };

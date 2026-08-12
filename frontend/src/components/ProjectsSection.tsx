@@ -116,26 +116,26 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
         />
       </motion.div>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-xl font-semibold text-white">{project.name}</h3>
+        <h3 className="md:text-xl text-[14.5px] font-semibold text-foreground">{project.name}</h3>
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-white/70 hover:text-primary transition-colors"
+          className="flex items-center text-[15px] gap-1 text-foreground/70 hover:text-primary transition-colors"
         >
           View site
           <ArrowUpRight size={18} />
         </a>
       </div>
-      <p className="text-white/60">{project.description}</p>
+      <p className="text-foreground/70">{project.description}</p>
     </motion.div>
   );
 };
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="w-full py-20 px-10 bg-[#111111]">
-      <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-16">
+    <section id="projects" className="w-full py-20 px-10 bg-background">
+      <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-foreground mb-16">
         Projects
       </h2>
       <div className="grid md:grid-cols-2 gap-8">

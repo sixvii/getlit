@@ -152,9 +152,9 @@ const RandomsReel = () => {
   const row2Images = [random6, random5, random4, random3, random2, random1];
 
   return (
-    <section className="w-full py-20 bg-[#111111]">
+    <section className="w-full py-20 bg-background">
       <div className="px-10 mb-12">
-        <h2 className="text-2xl md:text-6xl lg:text-7xl font-bold text-white">
+        <h2 className="text-2xl md:text-6xl lg:text-7xl font-bold text-foreground">
           Randoms Reel
         </h2>
       </div>

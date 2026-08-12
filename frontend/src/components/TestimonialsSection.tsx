@@ -35,9 +35,9 @@ const TestimonialsSection = () => {
   const doubledTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="w-full py-20 bg-[#111111]">
+    <section id="testimonials" className="w-full py-20 bg-background">
       <div className="px-10 mb-16">
-        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-center">
+        <h2 className="text-[18px] md:text-4xl lg:text-5xl font-bold text-foreground text-center">
           WRITTEN TESTIMONIALS FROM MY CLIENTS
         </h2>
       </div>
@@ -52,7 +52,7 @@ const TestimonialsSection = () => {
               {/* Header: Stars & Quote */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-1">
-                  <span className="text-white font-semibold mr-2">5/5</span>
+                  <span className="text-foreground font-semibold mr-2">5/5</span>
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="text-yellow-400 fill-yellow-400" size={16} />
                   ))}
@@ -61,7 +61,7 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Testimonial Text */}
-              <p className="text-white/80 text-lg mb-6 leading-relaxed">
+              <p className="text-foreground/80 text-lg mb-6 leading-relaxed">
                 {testimonial.text}
               </p>
 
@@ -72,7 +72,7 @@ const TestimonialsSection = () => {
                   alt={testimonial.name}
                   className="w-14 h-14 rounded-full object-cover"
                 />
-                <span className="text-white font-medium">{testimonial.name}</span>
+                <span className="text-foreground font-medium">{testimonial.name}</span>
               </div>
             </div>
           ))}

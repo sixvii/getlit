@@ -17,11 +17,11 @@ const CreativeToolbox = () => {
   const doubledTools = [...tools, ...tools];
 
   return (
-    <section className="w-full py-20 px-10 bg-[#111111]">
+    <section className="w-full py-20 px-10 bg-background">
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Left - Title */}
         <div className="lg:w-2/3">
-          <h2 className="text-4xl md:text-4xl lg:text-5xl font-[500] text-white leading-tight">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-[500] text-foreground leading-tight">
             My creative toolbox
           </h2>
         </div>
@@ -36,8 +36,8 @@ const CreativeToolbox = () => {
               >
                 <img src={tool.icon} alt={tool.name} className="w-12 h-12 mb-4" />
                 <div className="flex flex-wrap gap-3 items-center">
-                  <span className="text-white font-semibold text-lg">{tool.name}</span>
-                  <span className="text-white/60">{tool.description}</span>
+                  <span className="text-foreground font-semibold text-lg">{tool.name}</span>
+                  <span className="text-foreground/70">{tool.description}</span>
                 </div>
               </div>
             ))}
