@@ -118,10 +118,29 @@
   }
 
   .glass-card-3xl {
-    @apply backdrop-blur-xl border rounded-3xl;
+    @apply backdrop-blur-xl border-2 rounded-3xl;
     background-color: hsl(var(--card));
     border-color: hsl(var(--border));
     color: hsl(var(--card-foreground));
+  }
+
+  .hero-dashed-border {
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-dashed-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border: 1px solid transparent;
+      background:
+        repeating-linear-gradient(90deg, #1f2937 0 18px, transparent 18px 34px) top / 100% 1px no-repeat,
+        repeating-linear-gradient(90deg, #1f2937 0 18px, transparent 18px 34px) bottom / 100% 1px no-repeat,
+        repeating-linear-gradient(180deg, #1f2937 0 18px, transparent 18px 34px) left / 1px 100% no-repeat,
+        repeating-linear-gradient(180deg, #1f2937 0 18px, transparent 18px 34px) right / 1px 100% no-repeat;
+    }
   }
 
   .fade-edges {

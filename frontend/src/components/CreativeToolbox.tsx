@@ -17,7 +17,7 @@ const CreativeToolbox = () => {
   const doubledTools = [...tools, ...tools];
 
   return (
-    <section className="w-full py-20 px-10 bg-background">
+    <section className="w-full py-20 px-10 bg-background mx-auto md:max-w-7xl hero-dashed-border">
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Left - Title */}
         <div className="lg:w-2/3">

@@ -103,7 +103,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
       className="glass-card-3xl p-5 group"
     >
       <motion.div
-        className="overflow-hidden rounded-2xl mb-5"
+        className="overflow-hidden rounded-2xl mb-5 "
         animate={{
           scale: isInView ? 1 : 0.85,
         }}
@@ -134,7 +134,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="w-full py-20 px-10 bg-background">
+    <section id="projects" className="w-full py-20 px-10 bg-background mx-auto md:max-w-7xl hero-dashed-border">
       <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-foreground mb-16">
         Projects
       </h2>

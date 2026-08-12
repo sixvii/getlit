@@ -18,7 +18,7 @@ const orbitRadius = 112;
 const HomeIconOrbit = () => {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[360px] pause-on-hover">
-      <div className="absolute inset-6 rounded-full border border-border bg-card/60 shadow-[0_0_80px_rgba(0,0,0,0.08)]" />
+      <div className="absolute inset-6 rounded-full" />
       <div className="absolute inset-[20%] rounded-full bg-gradient-to-br from-foreground/10 to-transparent blur-2xl" />
 
       <div className="relative h-full w-full spin-slow">
@@ -28,7 +28,7 @@ const HomeIconOrbit = () => {
           return (
             <div
               key={icon.src}
-              className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-border bg-card/90 p-2 shadow-lg shadow-black/20 backdrop-blur-sm sm:h-28 sm:w-28"
+              className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full  p-2  sm:h-28 sm:w-28"
               style={{
                 transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${orbitRadius}px) rotate(${-angle}deg)`,
               }}
@@ -36,7 +36,7 @@ const HomeIconOrbit = () => {
               <img
                 src={icon.src}
                 alt={icon.alt}
-                className="h-full w-full rounded-full object-cover"
+                className="mx-auto my-auto h-[82%] w-[82%] rounded-full object-cover"
               />
             </div>
           );
@@ -48,7 +48,7 @@ const HomeIconOrbit = () => {
 
 const HeroSection = () => {
   return (
-    <section className="min-h-[70vh] flex items-center md:pt-12 pt-20 bg-background">
+    <section className="hero-dashed-border min-h-[70vh] flex items-center md:pt-12 pt-20 bg-background md:max-w-7xl mx-auto">
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-6 items-center pt-10">
           {/* Left - Image */}
@@ -74,7 +74,7 @@ const HeroSection = () => {
             <p className="text-[14px] md:text-3xl text-foreground/80 mb-6">
               Web developer & software developer
             </p>
-            <p className="text-foreground/70 md:text-lg text-[15px] leading-relaxed mb-8 max-w-6xl">
+            <p className="text-foreground/70 md:text-[19px] font-[400] text-[15px] leading-relaxed mb-8 max-w-6xl">
               I turn early ideas into sleek, I work with startups and founders who are building the next big thing (or fixing the last messy version of it). Whether it's your MVP, website, or dashboard. I bring structure, clarity.
             </p>
 
